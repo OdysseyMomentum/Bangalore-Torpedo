@@ -9,6 +9,30 @@
 <div style="padding: 10px;color: #616161;">
     <!-- <h5>Create a task for 21. Make it challenging!</h5> -->
     <mat-tab-group [(selectedIndex)]="demo1TabIndex">
+        <mat-tab label="Upload Data">
+            <div class="col-md-9 mx-auto">
+                <mat-card style="margin:3%; background-color: #cef2f8;">
+                    <form [formGroup]="myForm" (ngSubmit)="submit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Select training dataset</label>
+                            </div>
+                            <div clas="form-group">
+                                <div class="col-md-3">
+                                    <input formControlName="file" type="file" class="form-control" (change)="onFileChange($event)">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                                <button mat-raised-button color="primary" type="submit">Submit</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </mat-card>
+            </div>
+        </mat-tab>
         <mat-tab label="Create a Task" style="background-color: #cef2f8;">
             <div class="col-md-9 mx-auto">
                 <mat-card style="margin: 3%; background-color: #cef2f8;">
@@ -78,19 +102,48 @@
                         <div class="row">
                             <div class="col-md-10"></div>
                             <div class="col-md-2">
-                                <button mat-raised-button color="primary">Create Task</button>
+                                <button type="submit" mat-raised-button color="primary">Create Task</button>
                             </div>
                         </div>
                     </form>
+                </mat-card>
+                <mat-card style="margin: 2%;">
+                    {{this.taskresponse}}
                 </mat-card>
             </div>
         </mat-tab>
         <mat-tab label="Tasks List">
             <div class="col-md-3">
                 <mat-card style="margin: 3%; background-color: #cef2f8;">
-                    <mat-card-title>{{task.name}}</mat-card-title>
-                    <mat-card-subtitle>Type: {{task.type}}</mat-card-subtitle>
-                    <p><b>Status:</b> {{task.status}}</p>
+                    <mat-card-title>{{task_object.task_object.data_id}}</mat-card-title>
+                    <mat-card-subtitle>Type: {{task_object.task_object.type}}</mat-card-subtitle>
+                    <p><b>Status:</b> Completed</p>
+                    <button mat-raised-button (click)="inferClicked()">Run Inference</button>
+                </mat-card>
+            </div>
+            <div class="col-md-9">
+                <mat-card *ngIf="inferSwitch" style="background-color: #cef2f8;">
+                    <form [formGroup]="mySecondForm" (ngSubmit)="submitForInference()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Select sample dataset</label>
+                            </div>
+                            <div clas="form-group">
+                                <div class="col-md-3">
+                                    <input formControlName="file" type="file" class="form-control" (change)="onDatasetFileChange($event)">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                                <button mat-raised-button color="primary" type="submit">Submit</button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </mat-card>
+                <mat-card style="background-color: #cef2f8;">
+                    <p>{{inferenceResponse}}</p>
                 </mat-card>
             </div>
         </mat-tab>
