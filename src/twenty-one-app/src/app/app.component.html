@@ -1,0 +1,82 @@
+<div>
+    <mat-toolbar style="background-color:#f6f8f8 ;">
+        <mat-toolbar-row>
+            <span style="color:rgb(102, 139, 241); font-weight:500;">Twenty One Demo</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+<div style="padding: 10px;color: #616161;">
+    <!-- <h5>Create a task for 21. Make it challenging!</h5> -->
+    <mat-tab-group [(selectedIndex)]="demo1TabIndex">
+        <mat-tab label="Create a Task" style="background-color: #cef2f8;">
+            <div class="col-md-9 mx-auto">
+                <mat-card style="margin: 3%; background-color: #cef2f8;">
+                    <form (submit)="taskSubmit()">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Task Nick Name</label>
+                                    <input type="text" class="form-control border" name="taskName" [(ngModel)]="task.taskName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Type</label>
+                                    <!-- <input type="text" class="form-control border border-danger" name="product1" [(ngModel)]="stem.product1"> -->
+                                    <select class="form-control border" name="type" [(ngModel)]=task.type>
+                                      <option>Classification</option>
+                                      <option>Regression</option>
+                                      <option>Clustering</option>
+                                      <option>Forecasting</option>
+                                      <option>Anomaly Detection</option>
+                                      <option>Region Detection</option>
+                                      <option>Tagging</option>
+                                    
+                                  </select>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Evaluation Metric</label>
+                                    <input type="text" class="form-control border" name="evaluationMetric" [(ngModel)]="task.evaluationMetric" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Objective Function</label>
+                                    <input type="text" class="form-control border" name="objective" [(ngModel)]="task.objective" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 auto-mx">
+                                <div class="form-group">
+                                    <label for="name">Enter dataset link published on a marketplace powered by <b>Ocean Protocol</b></label>
+                                    <input type="text" class="form-control border" name="link" [(ngModel)]="task.link" required>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10"></div>
+                            <div class="col-md-2">
+                                <button mat-raised-button color="primary">Create Task</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </mat-tab>
+        <mat-tab label="Tasks List">
+            <div class="col-md-3">
+                <mat-card style="margin: 3%; background-color: #cef2f8;">
+                    <mat-card-title>{{task.taskName}}</mat-card-title>
+                    <mat-card-subtitle>Type: {{task.type}}</mat-card-subtitle>
+                    <p><b>Status:</b> {{task.status}}</p>
+                </mat-card>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
