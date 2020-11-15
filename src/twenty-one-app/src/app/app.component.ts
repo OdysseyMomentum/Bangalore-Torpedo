@@ -18,7 +18,7 @@ export class AppComponent {
 
   mySecondForm = new FormGroup({
     file: new FormControl('', [Validators.required]),
-    fileSourceNew: new FormControl('', [Validators.required])
+    fileSource: new FormControl('', [Validators.required])
   });
 
   constructor(private taskservice: TaskService) { }
@@ -78,8 +78,8 @@ export class AppComponent {
 
   submitForInference(){
     const formData = new FormData();
-    formData.append('file', this.mySecondForm.get('fileSourceNew').value);
-    formData.append('task_id','okP0KEPL')
+    formData.append('file', this.mySecondForm.get('fileSource').value);
+    // formData.append('task_id','okP0KEPL')
     console.log(formData)
     this.taskservice.runModelOnSample(formData).subscribe(res => {
       this.inferenceResponse = res

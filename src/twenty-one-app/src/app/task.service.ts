@@ -17,7 +17,7 @@ export class TaskService {
     //   })
 
     public uploadFile(req): Observable<any> {
-      const base = this._http.post('/data_upload', req)
+      const base = this._http.post('http://0.0.0.0:5000/data_upload', req)
       const request = base.pipe(
         map(data => data)
       );
@@ -26,7 +26,7 @@ export class TaskService {
     }
 
   public postTaskData(req): Observable<any>{
-    const base = this._http.post('/new_task',req)
+    const base = this._http.post('http://0.0.0.0:5000/new_task',req)
     
     const request = base.pipe(
       map(data => data)
@@ -46,7 +46,7 @@ export class TaskService {
   // }
 
   public runModelOnSample(req): Observable<any> {
-    const base = this._http.get('/infer',req)
+    const base = this._http.get('http://0.0.0.0:5000/infer',req)
     
     const request = base.pipe(
       map(data => data)
