@@ -10,10 +10,16 @@ export class AppComponent {
   title = 'twenty-one-app';
 
   task = {
-    id:'',
-    taskName:'',
+    _id:'',
+    name:'',
     type:'',
-    evaluationMetric:'',
+    data_id:'',
+    data_details: {
+      type:''
+    },
+    evaluation : {
+      metric: ''
+    },
     objective: '',
     link:'',
     status:'Pending'

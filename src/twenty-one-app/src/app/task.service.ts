@@ -11,7 +11,7 @@ export class TaskService {
   constructor(private _http: HttpClient) { }
 
   public postTaskData(req): Observable<any>{
-    const base = this._http.post('api/task',req)
+    const base = this._http.post('/new_task',req)
     
     const request = base.pipe(
       map(data => data)

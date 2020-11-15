@@ -18,7 +18,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Task Nick Name</label>
-                                    <input type="text" class="form-control border" name="taskName" [(ngModel)]="task.taskName" required>
+                                    <input type="text" class="form-control border" name="taskName" [(ngModel)]="task.name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Type</label>
@@ -40,7 +40,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Evaluation Metric</label>
-                                    <input type="text" class="form-control border" name="evaluationMetric" [(ngModel)]="task.evaluationMetric" required>
+                                    <input type="text" class="form-control border" name="evaluationMetric" [(ngModel)]="task.evaluation.metric" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Objective Function</label>
@@ -50,10 +50,27 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-md-12 auto-mx">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Enter dataset link published on a marketplace powered by <b>Ocean Protocol</b></label>
                                     <input type="text" class="form-control border" name="link" [(ngModel)]="task.link" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Type of data</label>
+                                    <!-- <input type="text" class="form-control border border-danger" name="product1" [(ngModel)]="stem.product1"> -->
+                                    <select class="form-control border" name="type" [(ngModel)]=task.data_details.type>
+                                      <option>image</option>
+                                      <option>text</option>
+                                      <option>audio</option>
+                                      <option>tabular</option>
+                                      <option>single_ts</option>
+                                      <option>multi_ts</option>
+                                      <option>location</option>
+                                      <option>graph</option>
+                                    
+                                  </select>
                                 </div>
                             </div>
 
@@ -71,7 +88,7 @@
         <mat-tab label="Tasks List">
             <div class="col-md-3">
                 <mat-card style="margin: 3%; background-color: #cef2f8;">
-                    <mat-card-title>{{task.taskName}}</mat-card-title>
+                    <mat-card-title>{{task.name}}</mat-card-title>
                     <mat-card-subtitle>Type: {{task.type}}</mat-card-subtitle>
                     <p><b>Status:</b> {{task.status}}</p>
                 </mat-card>
